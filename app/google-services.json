@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "559229813384",
+    "project_id": "taskrs2",
+    "storage_bucket": "taskrs2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:559229813384:android:160137ef77d2d7d6a9953d",
+        "android_client_info": {
+          "package_name": "com.example.taskrs"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "559229813384-o7a9p91i7gauk9uoa4i2qnk9pghttqh7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA_GNFyyaZxg_GsXM6G7RJUY2g6OhhwE98"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "559229813384-o7a9p91i7gauk9uoa4i2qnk9pghttqh7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
