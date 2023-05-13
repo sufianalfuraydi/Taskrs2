@@ -6,12 +6,17 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
 
 import com.example.taskrs.Adapter.ToDoAdapter;
 import com.example.taskrs.Model.model;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
@@ -27,6 +32,9 @@ public class MainActivity extends AppCompatActivity implements OnDialogCloseList
     private FirebaseFirestore firestore; // Firebase Firestore database instance
     private ToDoAdapter adapter; // Adapter for the RecyclerView
     private List<model> mList; // List of to-do items
+    FirebaseAuth auth;
+    Button button;
+    FirebaseUser user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +44,28 @@ public class MainActivity extends AppCompatActivity implements OnDialogCloseList
         // Get references to UI in activity_main.xml elements
         recyclerView = findViewById(R.id.recycerlview);
         Fab = findViewById(R.id.floatingActionButton);
+
+        auth = FirebaseAuth.getInstance();
+
+        button = findViewById(R.id.logout);
+
+        user = auth.getCurrentUser();
+
+        if (user == null){
+            Intent intent = new Intent(getApplicationContext(), Login.class);
+            startActivity(intent);
+            finish();
+        }
+
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FirebaseAuth.getInstance().signOut();
+                Intent intent = new Intent(getApplicationContext(), Login.class);
+                startActivity(intent);
+                finish();
+            }
+        });
 
         // Initialize Firebase Firestore database instance
         firestore = FirebaseFirestore.getInstance();
